@@ -24,10 +24,19 @@ int count(int votes[]) {
 	return count;
 	}
 
-void findWinner(int total, int votes[], String names[]) {
-	int maxCount = 0;
+String findWinner(int total, int votes[], String names[]) {
+	//int maxCount = 0;
 	int half = total/2;
-	 
+	int tally = 0;
+	for (int i = 0; i < votes.size(); i++) {
+		tally = votes[i];
+		if (tally > half) {
+			return names[i];
+		}
+	}
+
+	//if we get to this point, no candidate had the majority votes
+	//we need to start the process of eliminating candidates until we have a winner
 }
 int main() {
 	int instances;
@@ -35,6 +44,7 @@ int main() {
 	string blank;
 	getLine(cin, blank); //takes care of that blank lines
 	int numCandidates;
+	String winner;
 	int total;	
 		
 	for (int i = 0; i < instances; i++) {
@@ -50,6 +60,6 @@ int main() {
 	
 		total = count(votes);
 		//at this point, all the votes should have been tallied
-		findWinner(total, votes, names);
+		winner = findWinner(total, votes, names);
         }
 
